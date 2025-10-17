@@ -1,4 +1,4 @@
-import { Sparkles, TrendingUp } from "lucide-react";
+import { Sparkles, TrendingUp, Smartphone } from "lucide-react";
 import transformation1 from "@/assets/transformation-1.jpg";
 import transformation2 from "@/assets/transformation-2.jpg";
 import transformation3 from "@/assets/transformation-3.jpg";
@@ -14,18 +14,18 @@ import transformation12 from "@/assets/transformation-12.jpg";
 
 export const Transformations = () => {
   const transformations = [
-    { image: transformation1, featured: true },
-    { image: transformation2, featured: false },
-    { image: transformation3, featured: true },
-    { image: transformation4, featured: false },
-    { image: transformation5, featured: false },
-    { image: transformation6, featured: true },
-    { image: transformation7, featured: false },
-    { image: transformation8, featured: true },
-    { image: transformation9, featured: false },
-    { image: transformation10, featured: false },
-    { image: transformation11, featured: true },
-    { image: transformation12, featured: false },
+    transformation1,
+    transformation2,
+    transformation3,
+    transformation4,
+    transformation5,
+    transformation6,
+    transformation7,
+    transformation8,
+    transformation9,
+    transformation10,
+    transformation11,
+    transformation12,
   ];
 
   return (
@@ -38,10 +38,11 @@ export const Transformations = () => {
         <div className="text-center mb-16 animate-fade-in">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary rounded-full text-primary text-sm font-semibold uppercase tracking-wider mb-6">
             <Sparkles className="h-4 w-4" />
-            Resultados Reais
+            Resultados em 3 Meses
           </div>
-          <h2 className="text-4xl md:text-6xl font-black mb-6">
-            Veja o que os alunos <span className="text-gradient">conseguiram</span>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
+            Algumas evoluções comprovadas 
+            <span className="block text-gradient mt-2">dos meus alunos</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Essas transformações não são edição. São pessoas reais que decidiram levar o objetivo a sério. 
@@ -49,14 +50,12 @@ export const Transformations = () => {
           </p>
         </div>
 
-        {/* Grid de transformações */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {transformations.map((item, index) => (
+        {/* Grid de transformações - tamanho total */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {transformations.map((image, index) => (
             <div 
               key={index}
-              className={`group relative overflow-hidden rounded-2xl border-2 border-border hover:border-primary transition-all duration-500 shadow-lg hover:shadow-red animate-fade-in ${
-                item.featured ? 'lg:col-span-2 lg:row-span-1' : ''
-              }`}
+              className="group relative overflow-hidden rounded-2xl border-2 border-border hover:border-primary transition-all duration-500 shadow-lg hover:shadow-red animate-fade-in"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               {/* Badge ANTES → DEPOIS */}
@@ -65,20 +64,20 @@ export const Transformations = () => {
                 <span className="font-bold text-sm uppercase tracking-wider">Antes → Depois</span>
               </div>
 
-              {/* Imagem */}
-              <div className={`${item.featured ? 'aspect-video' : 'aspect-square'} overflow-hidden relative`}>
+              {/* Imagem em tamanho completo */}
+              <div className="w-full overflow-hidden relative">
                 <img 
-                  src={item.image} 
-                  alt={`Transformação Real ${index + 1}`}
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                  src={image} 
+                  alt={`Transformação Real ${index + 1} - Resultados em 3 meses`}
+                  className="w-full h-auto object-contain transition-all duration-700 group-hover:scale-105"
                 />
                 
-                {/* Overlay com efeito de gradiente */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Overlay sutil no hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 {/* Texto que aparece no hover */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                  <p className="text-2xl font-black text-gradient mb-2">Resultado Real</p>
+                  <p className="text-2xl font-black text-gradient mb-2">Resultado Real em 3 Meses</p>
                   <p className="text-foreground font-semibold">Com método, disciplina e acompanhamento profissional</p>
                 </div>
               </div>
@@ -91,12 +90,39 @@ export const Transformations = () => {
           ))}
         </div>
 
+        {/* Bônus: App de Treinos */}
+        <div className="mb-16 p-10 rounded-3xl bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 border-2 border-primary shadow-red animate-fade-in">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-shrink-0">
+              <div className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-red">
+                <Smartphone className="h-10 w-10" />
+              </div>
+            </div>
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-3xl font-black mb-3 text-gradient">
+                BÔNUS EXCLUSIVO
+              </h3>
+              <p className="text-xl font-semibold text-foreground mb-2">
+                Assinando a consultoria você ganha acesso ao meu aplicativo de treinos personalizado
+              </p>
+              <p className="text-lg text-muted-foreground">
+                Totalmente montado para o seu objetivo, com exercícios detalhados e acompanhamento em tempo real
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <div className="px-6 py-3 bg-primary rounded-xl font-black text-2xl shadow-lg">
+                GRÁTIS
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Stats motivacionais */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="text-center p-8 rounded-2xl bg-card border border-primary/30 shadow-red animate-fade-in">
-            <p className="text-5xl font-black text-gradient mb-4">12+</p>
-            <p className="text-lg font-semibold text-foreground mb-2">Transformações Comprovadas</p>
-            <p className="text-sm text-muted-foreground">Resultados que falam por si</p>
+            <p className="text-5xl font-black text-gradient mb-4">3 Meses</p>
+            <p className="text-lg font-semibold text-foreground mb-2">Tempo Médio de Resultado</p>
+            <p className="text-sm text-muted-foreground">Transformação visível e real</p>
           </div>
           <div className="text-center p-8 rounded-2xl bg-card border border-primary/30 shadow-red animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <p className="text-5xl font-black text-gradient mb-4">100%</p>
