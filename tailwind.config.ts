@@ -80,10 +80,28 @@ export default {
             height: "0",
           },
         },
+        "pulse-slow": {
+          "0%, 100%": {
+            opacity: "1",
+          },
+          "50%": {
+            opacity: "0.7",
+          },
+        },
+        "glow": {
+          "0%, 100%": {
+            boxShadow: "0 0 20px hsla(0, 85%, 55%, 0.3)",
+          },
+          "50%": {
+            boxShadow: "0 0 40px hsla(0, 85%, 55%, 0.6)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-slow": "pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "glow": "glow 2s ease-in-out infinite",
       },
     },
   },
