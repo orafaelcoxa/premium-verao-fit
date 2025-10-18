@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, CreditCard, QrCode } from "lucide-react";
+import { Check, CreditCard, QrCode, Key } from "lucide-react";
+import QRCode from "react-qr-code";
 import checkoutBg from "@/assets/checkout-bg.jpg";
 const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState<"credit" | "pix">("credit");
+  const [pixOption, setPixOption] = useState<"qrcode" | "key">("qrcode");
   const pixKey = "44151334874";
+  const signupLink = "https://client.mfitpersonal.com.br/out/signup-link/MjU0NTEx";
+  const pixPaymentString = `00020126330014BR.GOV.BCB.PIX0111${pixKey}5204000053039865802BR5925CONSULTORIA PREMIUM VERAO6009SAO PAULO62070503***6304`;
   const benefits = ["Treino 100% personalizado", "Estratégias de alimentação ajustadas", "Acompanhamento semanal direto", "Ajustes mensais conforme evolução", "Suporte via WhatsApp", "Acesso ao app de treinos personalizado"];
   return <div className="min-h-screen relative overflow-hidden">
       {/* Background Image */}
@@ -81,30 +85,63 @@ const Checkout = () => {
                 </button>
               </div>
 
-              {paymentMethod === "pix" && <div className="mb-8 p-6 bg-primary/10 rounded-lg border border-primary animate-fade-in">
-                  <p className="font-bold mb-2">Chave PIX:</p>
-                  <div className="flex items-center gap-2 bg-background/50 p-3 rounded">
-                    <code className="text-lg flex-1">{pixKey}</code>
-                    <Button size="sm" onClick={() => {
-                  navigator.clipboard.writeText(pixKey);
-                }}>
-                      Copiar
-                    </Button>
+              {paymentMethod === "pix" && <div className="mb-8 space-y-4 animate-fade-in">
+                  <div className="flex gap-4">
+                    <button onClick={() => setPixOption("qrcode")} className={`flex-1 p-4 rounded-lg border-2 transition-all ${pixOption === "qrcode" ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>
+                      <div className="flex items-center gap-2 justify-center">
+                        <QrCode className="h-5 w-5 text-primary" />
+                        <span className="font-bold">QR Code</span>
+                      </div>
+                    </button>
+                    <button onClick={() => setPixOption("key")} className={`flex-1 p-4 rounded-lg border-2 transition-all ${pixOption === "key" ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>
+                      <div className="flex items-center gap-2 justify-center">
+                        <Key className="h-5 w-5 text-primary" />
+                        <span className="font-bold">Chave PIX</span>
+                      </div>
+                    </button>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-3">
-                    Após o pagamento, envie o comprovante via WhatsApp
-                  </p>
+
+                  {pixOption === "qrcode" ? <div className="p-6 bg-primary/10 rounded-lg border border-primary">
+                      <p className="font-bold mb-4 text-center">Escaneie o QR Code:</p>
+                      <div className="bg-white p-4 rounded-lg flex justify-center">
+                        <QRCode value={pixPaymentString} size={200} />
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-4 text-center">
+                        Escaneie com o app do seu banco
+                      </p>
+                    </div> : <div className="p-6 bg-primary/10 rounded-lg border border-primary">
+                      <p className="font-bold mb-2">Chave PIX:</p>
+                      <div className="flex items-center gap-2 bg-background/50 p-3 rounded">
+                        <code className="text-lg flex-1">{pixKey}</code>
+                        <Button size="sm" onClick={() => {
+                      navigator.clipboard.writeText(pixKey);
+                    }}>
+                          Copiar
+                        </Button>
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-3">
+                        Cole a chave no app do seu banco
+                      </p>
+                    </div>}
                 </div>}
 
               <Button size="lg" className="w-full text-xl py-8 bg-primary hover:bg-primary/90 shadow-red transition-all duration-300 hover:scale-105 glow-red font-bold" onClick={() => {
               if (paymentMethod === "pix") {
-                window.open(`https://wa.me/55${pixKey}?text=Olá! Gostaria de contratar a Consultoria Premium Verão 2026 via PIX`, "_blank");
+                // Open WhatsApp to send payment proof
+                window.open(`https://wa.me/55${pixKey}?text=Olá! Realizei o pagamento da Consultoria Premium Verão 2026 via PIX. Segue o comprovante.`, "_blank");
+                // Redirect to signup after a short delay
+                setTimeout(() => {
+                  window.location.href = signupLink;
+                }, 2000);
               } else {
-                // Redirect to credit card payment
+                // Redirect to credit card payment then to signup
                 window.location.href = 'https://cakto-premium-checkout.lovable.app';
+                setTimeout(() => {
+                  window.location.href = signupLink;
+                }, 3000);
               }
             }}>
-                {paymentMethod === "pix" ? "Pagar com PIX" : "Pagar com Cartão"}
+                {paymentMethod === "pix" ? "Finalizar Pagamento PIX" : "Finalizar Pagamento"}
               </Button>
 
               <p className="text-center text-sm text-muted-foreground mt-4">
