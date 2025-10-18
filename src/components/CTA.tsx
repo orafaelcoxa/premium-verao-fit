@@ -29,7 +29,7 @@ export const CTA = () => {
               <Button 
                 size="lg" 
                 className="text-xl px-12 py-8 bg-primary hover:bg-primary/90 shadow-red transition-all duration-300 hover:scale-105 glow-red font-bold"
-                onClick={() => window.location.href = 'https://cakto-premium-checkout.lovable.app'}
+                onClick={() => window.location.href = '/checkout'}
               >
                 Garantir Minha Vaga Agora
                 <ArrowRight className="ml-3 h-6 w-6" />

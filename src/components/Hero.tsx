@@ -40,7 +40,7 @@ export const Hero = () => {
               <Button 
                 size="lg" 
                 className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 shadow-red transition-all duration-300 hover:scale-105"
-                onClick={() => window.location.href = 'https://cakto-premium-checkout.lovable.app'}
+                onClick={() => window.location.href = '/checkout'}
               >
                 Começar Agora
                 <ArrowRight className="ml-2 h-5 w-5" />
