@@ -48,9 +48,7 @@ const Checkout = () => {
                   <span className="text-2xl font-bold">Investimento:</span>
                   <span className="text-4xl font-black text-gradient">R$ 97</span>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  Valor mensal com acompanhamento completo
-                </p>
+                <p className="text-sm text-muted-foreground">Valor Trimestral com acompanhamento completo</p>
               </div>
             </Card>
 
@@ -113,8 +111,8 @@ const Checkout = () => {
                       <div className="flex items-center gap-2 bg-background/50 p-3 rounded">
                         <code className="text-lg flex-1">{pixKey}</code>
                         <Button size="sm" onClick={() => {
-                      navigator.clipboard.writeText(pixKey);
-                    }}>
+                    navigator.clipboard.writeText(pixKey);
+                  }}>
                           Copiar
                         </Button>
                       </div>
