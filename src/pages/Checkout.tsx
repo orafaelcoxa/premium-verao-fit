@@ -102,8 +102,8 @@ const Checkout = () => {
 
                   {pixOption === "qrcode" ? <div className="p-6 bg-primary/10 rounded-lg border border-primary">
                       <p className="font-bold mb-4 text-center">Escaneie o QR Code:</p>
-                      <div className="bg-white p-4 rounded-lg flex justify-center">
-                        <img src={qrCodePix} alt="QR Code PIX" className="w-[200px] h-[200px]" />
+                      <div className="bg-white p-6 rounded-lg flex justify-center">
+                        <img src={qrCodePix} alt="QR Code PIX" className="w-full max-w-[320px] h-auto" />
                       </div>
                       <p className="text-sm text-muted-foreground mt-4 text-center">
                         Escaneie com o app do seu banco
