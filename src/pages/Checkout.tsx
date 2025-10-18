@@ -2,14 +2,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, CreditCard, QrCode, Key } from "lucide-react";
-import QRCode from "react-qr-code";
 import checkoutBg from "@/assets/checkout-bg.jpg";
+import qrCodePix from "@/assets/qr-code-pix.jpg";
 const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState<"credit" | "pix">("credit");
   const [pixOption, setPixOption] = useState<"qrcode" | "key">("qrcode");
   const pixKey = "44151334874";
   const signupLink = "https://client.mfitpersonal.com.br/out/signup-link/MjU0NTEx";
-  const pixPaymentString = `00020126330014BR.GOV.BCB.PIX0111${pixKey}5204000053039865802BR5925CONSULTORIA PREMIUM VERAO6009SAO PAULO62070503***6304`;
   const benefits = ["Treino 100% personalizado", "Estratégias de alimentação ajustadas", "Acompanhamento semanal direto", "Ajustes mensais conforme evolução", "Suporte via WhatsApp", "Acesso ao app de treinos personalizado"];
   return <div className="min-h-screen relative overflow-hidden">
       {/* Background Image */}
@@ -104,7 +103,7 @@ const Checkout = () => {
                   {pixOption === "qrcode" ? <div className="p-6 bg-primary/10 rounded-lg border border-primary">
                       <p className="font-bold mb-4 text-center">Escaneie o QR Code:</p>
                       <div className="bg-white p-4 rounded-lg flex justify-center">
-                        <QRCode value={pixPaymentString} size={200} />
+                        <img src={qrCodePix} alt="QR Code PIX" className="w-[200px] h-[200px]" />
                       </div>
                       <p className="text-sm text-muted-foreground mt-4 text-center">
                         Escaneie com o app do seu banco
