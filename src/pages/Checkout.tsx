@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, CreditCard, QrCode, Key } from "lucide-react";
 import checkoutBg from "@/assets/checkout-bg.jpg";
-import qrCodePix from "@/assets/qr-code-pix.jpg";
+import qrCodePix from "@/assets/qr-code-pix-cropped.jpg";
 const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState<"credit" | "pix">("credit");
   const [pixOption, setPixOption] = useState<"qrcode" | "key">("qrcode");
