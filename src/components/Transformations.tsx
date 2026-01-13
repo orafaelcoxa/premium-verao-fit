@@ -11,6 +11,14 @@ import transformation9 from "@/assets/transformation-9.jpg";
 import transformation10 from "@/assets/transformation-10.jpg";
 import transformation11 from "@/assets/transformation-11.jpg";
 import transformation12 from "@/assets/transformation-12.jpg";
+import transformation13 from "@/assets/transformation-13.jpg";
+import transformation14 from "@/assets/transformation-14.jpg";
+import transformation15 from "@/assets/transformation-15.jpg";
+import transformation16 from "@/assets/transformation-16.jpg";
+import transformation17 from "@/assets/transformation-17.jpg";
+import transformation18 from "@/assets/transformation-18.jpg";
+import transformation19 from "@/assets/transformation-19.jpg";
+import transformation20 from "@/assets/transformation-20.jpg";
 
 export const Transformations = () => {
   const transformations = [
@@ -26,6 +34,14 @@ export const Transformations = () => {
     transformation10,
     transformation11,
     transformation12,
+    transformation13,
+    transformation14,
+    transformation15,
+    transformation16,
+    transformation17,
+    transformation18,
+    transformation19,
+    transformation20,
   ];
 
   return (
